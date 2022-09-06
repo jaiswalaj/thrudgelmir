@@ -1,0 +1,14 @@
+<div hx-target="this" hx-swap="outerHTML" class="mt-3 py-3 px-3 bg-white shadow border border-gray-100">
+    {% if exception_list %}
+        <h1 class="font-bold text-lg mb-2 text-gray-700">Infra Constructed Sucessfully with Exception: </h1>
+        <ul class="list-disc px-5 text-gray-700 text-base">
+            {% for exception in exception_list %}
+                <li> {{ exception }} </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h1 class="font-bold text-lg mb-2 text-gray-700">Infra Constructed Sucessfully with No Exception</h1>
+    {% endif %}
+
+    <h1 class="font-bold text-lg mb-2 text-red-700">This Infrastructure will be Destroyed in {{ minutes_to_live }} minutes.</h1>
+</div>
