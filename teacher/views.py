@@ -251,8 +251,7 @@ def buildInfra(request, pk, pk2):
         else:
             temp_sub_dict[labels_dict['network_name']] = server.network.network_name
         
-        if server.network.router != None and server.network.router.router_name == "Public Network Router":
-            print("IN FLOAT CONDITION")
+        if server.network.network_name != "Public Network" and server.network.router != None and server.network.router.router_name == "Public Network Router":
             temp_sub_dict[labels_dict['floating_ip']] = server.floating_ip
         else:
             temp_sub_dict[labels_dict['floating_ip']] = False
@@ -265,7 +264,6 @@ def buildInfra(request, pk, pk2):
     temp_main_dict[labels_dict['resource_detail']] = temp_list
     resource_list.append(temp_main_dict)
 
-    print(resource_list)
     exception_list = big_bang(resource_list)
 
     context = {

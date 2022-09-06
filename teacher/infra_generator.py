@@ -176,8 +176,8 @@ def big_bang(resources_script):
         for data in resource['details']:
             data_value_list = list(data.values())
             exception_value = allowed_resource_args[resource['resource']](data_value_list)
-        if exception_value != "":
-            exception_list.append(exception_value)
+            if exception_value != "":
+                exception_list.append(exception_value)
 
     return exception_list
     
