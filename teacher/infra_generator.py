@@ -12,6 +12,15 @@ router_dict = {}
 server_dict = {}
 floating_ip_dict = {}
 
+def reinitialize_dicts():
+    image_dict.clear()
+    flavor_dict.clear()
+    network_dict.clear()
+    subnet_dict.clear()
+    router_dict.clear()
+    server_dict.clear()
+    floating_ip_dict.clear()
+
 
 def create_network(data_list):
     network_name = data_list[0]
@@ -146,6 +155,7 @@ def big_crunch():
         response_received = requests.delete(parent_endpoint+floating_ip_list_endpoint+id, auth = user_auth_details)
         print(response_received)
     
+    reinitialize_dicts()
     print("The Tandav Ended")
 
 
@@ -155,6 +165,8 @@ def big_bang(resources_script):
         "router": create_router,
         "server": create_server,
     }
+
+    reinitialize_dicts()
 
     response_received = requests.get(parent_endpoint+image_list_endpoint, auth = user_auth_details)
     for image in response_received.json():

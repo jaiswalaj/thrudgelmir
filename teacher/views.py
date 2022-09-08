@@ -273,6 +273,9 @@ def buildInfra(request, pk, pk2):
 
     interval = cloudinfra.minutes_to_live * 60
     destruction_time = Timer(interval=interval, function=big_crunch)
-    destruction_time.start()
+    destruction_time.start()    
+    # destruction_time.join()
+
+    
 
     return render(request, 'teacher/partials/build_infra.html', context)
